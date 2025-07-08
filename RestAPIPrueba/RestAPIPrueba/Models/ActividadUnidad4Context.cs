@@ -15,8 +15,6 @@ public partial class ActividadUnidad4Context : DbContext
     {
     }
 
-    public virtual DbSet<Categoria> Categorias { get; set; }
-
     public virtual DbSet<Producto> Productos { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
@@ -27,20 +25,11 @@ public partial class ActividadUnidad4Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Categoria>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC07446D24E1");
-
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-        });
-
         modelBuilder.Entity<Producto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Producto__3214EC072AAF3661");
+            entity.HasKey(e => e.Id).HasName("PK__Producto__3214EC07680432F8");
 
-            entity.HasIndex(e => e.Code, "UQ__Producto__A25C5AA796BB6287").IsUnique();
+            entity.HasIndex(e => e.Code, "UQ__Producto__A25C5AA78989B5DE").IsUnique();
 
             entity.Property(e => e.Category).HasMaxLength(50);
             entity.Property(e => e.Code).HasMaxLength(20);
@@ -51,9 +40,9 @@ public partial class ActividadUnidad4Context : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC079FB9DA08");
+            entity.HasKey(e => e.Id).HasName("PK__Usuarios__3214EC07D21C930B");
 
-            entity.HasIndex(e => e.Email, "UQ__Usuarios__A9D105342EB52EDB").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Usuarios__A9D1053426E3BDE4").IsUnique();
 
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(100);
