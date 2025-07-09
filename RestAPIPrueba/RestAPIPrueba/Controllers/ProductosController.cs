@@ -15,7 +15,6 @@ public class ProductosController : ControllerBase
         _context = context;
     }
 
-    // GET: /api/productos
     [HttpGet]
     public async Task<IActionResult> ObtenerTodos()
     {
@@ -23,7 +22,6 @@ public class ProductosController : ControllerBase
         return Ok(productos);
     }
 
-    // GET: /api/productos/{id}
     [HttpGet("{id}")]
     public async Task<IActionResult> ObtenerPorID(int id)
     {
@@ -34,7 +32,6 @@ public class ProductosController : ControllerBase
         return Ok(producto);
     }
 
-    // POST: /api/productos
     [HttpPost]
     public async Task<IActionResult> Registrar([FromBody] Producto producto)
     {
@@ -47,7 +44,6 @@ public class ProductosController : ControllerBase
         return CreatedAtAction(nameof(ObtenerPorID), new { id = producto.Id }, producto);
     }
 
-    // PUT: /api/productos/{id}
     [HttpPut("{id}")]
     public async Task<IActionResult> Actualizar(int id, [FromBody] Producto producto)
     {
@@ -73,7 +69,6 @@ public class ProductosController : ControllerBase
         }
     }
 
-    // DELETE: /api/productos/{id}
     [HttpDelete("{id}")]
     public async Task<IActionResult> Eliminar(int id)
     {
@@ -100,5 +95,7 @@ public class ProductosController : ControllerBase
             errores.Add("El stock no puede ser negativo.");
 
         return errores.Count == 0;
+
     }
+
 }
